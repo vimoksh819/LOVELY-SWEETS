@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovely Sweets Delivery Animation</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fdf3e3;
+        }
+
+        /* Animation Container */
+        .animation-container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        /* Scooter Animation */
+        .scooter {
+            position: absolute;
+            width: 80px;
+            bottom: 30px;
+            left: -100px;
+            animation: moveScooter 3s linear forwards;
+        }
+
+        @keyframes moveScooter {
+            0% { left: -100px; }
+            50% { left: 50%; transform: translateX(-50%); }
+            100% { left: 100%; }
+        }
+
+        /* Order Confirmation Message */
+        .message {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        /* Thank You Message */
+        .thank-you {
+            font-size: 26px;
+            color: #d9534f;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in 4s forwards;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animation-container">
+        <!-- Scooter Image -->
+        <img src="im/OIP.jpg" alt="Scooter" class="scooter">
+
+        <!-- Messages -->
+        <div class="message">Your order has been confirmed!</div>
+        <div class="thank-you">Thank you for ordering from Lovely Sweets!</div>
+    </div>
+
+</body>
+</html>

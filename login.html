@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Sign Up - Lovely Sweets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+
+        .toggle-link {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        .signup-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .thank-you-message {
+            display: none;
+            color: green;
+            font-size: 18px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="greeting"></div>
+        <div class="login-form">
+            <input type="text" id="login-name" placeholder="Enter your name" required>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+            <button onclick="login()"><a href="home1.html">Sign In</a></button>
+            <p>Don't have an account? <span class="toggle-link" onclick="toggleSignup()">Sign Up</span></p>
+        </div>
+
+        <div class="signup-container">
+            <h1>Sign Up</h1>
+            <input type="text" id="signup-name" placeholder="Enter your name" required>
+            <input type="text" id="signup-phone" placeholder="Enter your phone number" required>
+            <input type="password" id="signup-password" placeholder="Enter your password" required>
+            <button onclick="signup()">Sign Up</button>
+            <p>Already have an account? <span class="toggle-link" onclick="toggleLogin()">Login</span></p>
+        </div>
+
+        <div class="thank-you-message">
+            <p>Thank you for signing up! You are now a part of Lovely Sweets.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSignup() {
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector('.signup-container').style.display = 'block';
+        }
+
+        function toggleLogin() {
+            document.querySelector('.signup-container').style.display = 'none';
+            document.querySelector('.login-form').style.display = 'block';
+        }
+
+        function signup() {
+            const name = document.getElementById('signup-name').value;
+            const phone = document.getElementById('signup-phone').value;
+            const password = document.getElementById('signup-password').value;
+
+            if (name && phone && password) {
+                document.querySelector('.signup-container').style.display = 'none';
+                document.querySelector('.thank-you-message').style.display = 'block';
+            } else {
+                alert('Please fill all the fields.');
+            }
+        }
+
+        function login() {
+            const name = document.getElementById('login-name').value;
+            const password = document.getElementById('login-password').value;
+
+            if (name && password) {
+                const currentHour = new Date().getHours();
+                let greetingMessage;
+
+                if (currentHour >= 5 && currentHour < 12) {
+                    greetingMessage = "Good Morning, " + name + "!";
+                } else if (currentHour >= 12 && currentHour < 17) {
+                    greetingMessage = "Good Afternoon, " + name + "!";
+                } else {
+                    greetingMessage = "Good Evening, " + name + "!";
+                }
+
+                document.querySelector('.greeting').textContent = greetingMessage;
+                document.querySelector('.login-form').style.display = 'none';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+
+</body>
+</html>
